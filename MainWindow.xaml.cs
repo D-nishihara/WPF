@@ -47,10 +47,13 @@ namespace WpfApp1
                 Class2 class2 = new Class2();
                 class2.Xmlwrite(value);
 
-                //labelvalue.Content = value;
-                listvalue.Items.Add(value);
 
-                //grid1.Children.Add(textvalue);
+                //listvalue.Items.Add(value);
+                //TextBox textBox = new TextBox();
+                var list = new List<string>();
+                list.Add(value);
+                textinsertvalue.DataContext = list;
+
 
                 MessageBox.Show("登録が完了しました。");
             }
@@ -58,33 +61,33 @@ namespace WpfApp1
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (listvalue.SelectedItems.Count == 0)
-            {
-                return;
-            }
-            else
-            {
-                listvalue.Items.RemoveAt(listvalue.SelectedIndex);
-                MessageBox.Show("登録内容を削除しました。");
-            }
+            //if (textinsertvalue == 0)
+            //{
+            //    return;
+            //}
+            //else
+            //{
+            //    listvalue.Items.RemoveAt(listvalue.SelectedIndex);
+            //    MessageBox.Show("登録内容を削除しました。");
+            //}
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if (listvalue.SelectedItems.Count == 0)
-            {
-                return;
-            }
-            else
-            {
-                //listvalue.Items.RemoveAt(listvalue.SelectedIndex);
-                //listvalue.Items.Add(textvalue.Text);
+            //if (listvalue.SelectedItems.Count == 0)
+            //{
+            //    return;
+            //}
+            //else
+            //{
+            //    //listvalue.Items.RemoveAt(listvalue.SelectedIndex);
+            //    //listvalue.Items.Add(textvalue.Text);
 
-                //var a = listvalue.SelectedItems;
-                //a = textvalue.Text;
+            //    //var a = listvalue.SelectedItems;
+            //    //a = textvalue.Text;
                 
-                MessageBox.Show("登録内容を編集しました。");
-            }
+            //    MessageBox.Show("登録内容を編集しました。");
+            //}
         }
 
         public void TextBox_TextChanged(object sender, TextChangedEventArgs e)
