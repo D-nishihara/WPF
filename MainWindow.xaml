@@ -13,6 +13,8 @@
         <Button Content="編集" HorizontalAlignment="Left" Margin="486,220,0,0" VerticalAlignment="Top" Width="131" Height="36" Click="Button_Click_2"/>
         <Label x:Name="labelvalue" HorizontalAlignment="Left" Margin="298,291,0,0" VerticalAlignment="Top" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <CheckBox Content="チェックを入れると編集が可能です。" HorizontalAlignment="Left" Margin="329,279,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
-        <ListView x:Name="listvalue" HorizontalAlignment="Left" Height="71" Margin="298,319,0,0" VerticalAlignment="Top" Width="Auto"/>
+        <TextBox x:Name="textinsertvalue" HorizontalAlignment="Left" Height="23" Margin="298,316,0,0" TextWrapping="Wrap" Text="{Binding list, Mode=TwoWay}" VerticalAlignment="Top" Width="Auto"/>
+        <!--ListView x:Name="listvalue" HorizontalAlignment="Left" Height="71" Margin="298,319,0,0" VerticalAlignment="Top" Width="Auto"/>-->
+
     </Grid>
 </Window>
