@@ -5,16 +5,69 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="登録画面" Height="420.914" Width="743.033">
-    <Grid x:Name="grid1">
+        Title="登録画面" Height="500.914" Width="743.033">
+    <Window.Resources>
+        <!-- Textbox2スタイル -->
+        <Style x:Key="TextBox2Style" TargetType="{x:Type TextBox}">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Margin" Value="10,190,0,0" />
+            <Setter Property="Height" Value="30"/>
+        </Style>
+        <!-- Textbox1スタイル -->
+        <Style x:Key="TextBox1Style" TargetType="{x:Type TextBox}"
+               BasedOn="{StaticResource TextBox2Style}">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="250,100,0,0" />
+            <Setter Property="Width" Value="200"/>
+        </Style>
+        <!-- Buttonスタイル -->
+        <Style x:Key="Default1Button" TargetType="{x:Type Button}">
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="Content" Value="登録"/>
+            <Setter Property="Margin" Value="200,200,200,100"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="70"/>
+        </Style>
+        <!-- Buttonスタイル -->
+        <Style x:Key="Default2Button" TargetType="{x:Type Button}"
+               BasedOn="{StaticResource Default1Button}">
+            <Setter Property="Content" Value="削除"/>
+            <Setter Property="Margin" Value="310,200,210,100"/>
+        </Style>
+        <!-- Buttonスタイル -->
+        <Style x:Key="Default3Button" TargetType="{x:Type Button}"
+               BasedOn="{StaticResource Default1Button}">
+            <Setter Property="Content" Value="編集"/>
+            <Setter Property="Margin" Value="420,200,200,80"/>
+        </Style>
+
+
+
+
+
+    </Window.Resources>
+    
+    <!--<Grid x:Name="grid1">
         <TextBox x:Name="textvalue" HorizontalAlignment="Left" Height="39" Margin="235,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="TextBox_TextChanged"/>
         <Button Content="登録" HorizontalAlignment="Left" Margin="125,220,0,0" VerticalAlignment="Top" Width="115" Height="36" Click="Button_Click"/>
         <Button Content="削除" HorizontalAlignment="Left" Margin="298,220,0,0" VerticalAlignment="Top" Width="134" Height="36" Click="Button_Click_1"/>
         <Button Content="編集" HorizontalAlignment="Left" Margin="486,220,0,0" VerticalAlignment="Top" Width="131" Height="36" Click="Button_Click_2"/>
         <Label x:Name="labelvalue" HorizontalAlignment="Left" Margin="298,291,0,0" VerticalAlignment="Top" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <CheckBox Content="チェックを入れると編集が可能です。" HorizontalAlignment="Left" Margin="329,279,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
-        <TextBox x:Name="textinsertvalue" HorizontalAlignment="Left" Height="23" Margin="298,316,0,0" TextWrapping="Wrap" Text="{Binding list, Mode=TwoWay}" VerticalAlignment="Top" Width="Auto"/>
-        <!--ListView x:Name="listvalue" HorizontalAlignment="Left" Height="71" Margin="298,319,0,0" VerticalAlignment="Top" Width="Auto"/>-->
-
+    <StackPanel>
+            <TextBox x:Name="textinsertvalue" HorizontalAlignment="Left" Height="23" Margin="298,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+    </StackPanel>
+    </Grid>-->
+    <Grid x:Name="grid1">
+        <Canvas x:Name="canvas1">
+            <TextBox x:Name="textvalue" Style="{StaticResource TextBox1Style}" ></TextBox>
+            <!--<TextBox x:Name="textinsertvalue" Style="{StaticResource TextBox2Style}" ></TextBox>-->
+            <Button Style="{StaticResource Default1Button}" Click="Button_Click"></Button>
+            <Button Style="{StaticResource Default2Button}" Click="Button_Click_1"></Button>
+            <Button Style="{StaticResource Default3Button}" Click="Button_Click_2"></Button>
+            <!--<RadioButton x:Name="radiobutton" GroupName="radioA" IsChecked="True" Visibility="Hidden" Click="Check_RadioButton"/>-->
+        </Canvas>
     </Grid>
 </Window>
