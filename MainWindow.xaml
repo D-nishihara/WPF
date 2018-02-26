@@ -26,7 +26,6 @@
         <Style x:Key="Default1Button" TargetType="{x:Type Button}">
             <Setter Property="FontSize" Value="17"/>
             <Setter Property="Content" Value="登録"/>
-            <Setter Property="Margin" Value="200,200,200,100"/>
             <Setter Property="Height" Value="50"/>
             <Setter Property="Width" Value="70"/>
         </Style>
@@ -34,13 +33,11 @@
         <Style x:Key="Default2Button" TargetType="{x:Type Button}"
                BasedOn="{StaticResource Default1Button}">
             <Setter Property="Content" Value="削除"/>
-            <Setter Property="Margin" Value="310,200,210,100"/>
         </Style>
         <!-- Buttonスタイル -->
         <Style x:Key="Default3Button" TargetType="{x:Type Button}"
                BasedOn="{StaticResource Default1Button}">
             <Setter Property="Content" Value="編集"/>
-            <Setter Property="Margin" Value="420,200,200,80"/>
         </Style>
 
 
@@ -60,14 +57,34 @@
             <TextBox x:Name="textinsertvalue" HorizontalAlignment="Left" Height="23" Margin="298,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
     </StackPanel>
     </Grid>-->
-    <Grid x:Name="grid1">
-        <Canvas x:Name="canvas1">
+    <Grid ShowGridLines="True" x:Name="grid1">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!--<Canvas x:Name="canvas1">
             <TextBox x:Name="textvalue" Style="{StaticResource TextBox1Style}" ></TextBox>
+            --><!--<TextBox x:Name="textinsertvalue" Style="{StaticResource TextBox2Style}" ></TextBox>--><!--
+            <Button Style="{StaticResource Default1Button}" Click="Button_Click"></Button>
+            <Button Style="{StaticResource Default2Button}" Click="Button_Click_1"></Button>
+            <Button Style="{StaticResource Default3Button}" Click="Button_Click_2"></Button>
+            --><!--<RadioButton x:Name="radiobutton" GroupName="radioA" IsChecked="True" Visibility="Hidden" Click="Check_RadioButton"/>--><!--
+        </Canvas>-->
+
+        <StackPanel Grid.Row="0" x:Name="stack1">
+            <TextBox x:Name="textvalue" Style="{StaticResource TextBox1Style}" Margin="50" ></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center"  >
             <!--<TextBox x:Name="textinsertvalue" Style="{StaticResource TextBox2Style}" ></TextBox>-->
             <Button Style="{StaticResource Default1Button}" Click="Button_Click"></Button>
             <Button Style="{StaticResource Default2Button}" Click="Button_Click_1"></Button>
             <Button Style="{StaticResource Default3Button}" Click="Button_Click_2"></Button>
             <!--<RadioButton x:Name="radiobutton" GroupName="radioA" IsChecked="True" Visibility="Hidden" Click="Check_RadioButton"/>-->
-        </Canvas>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" x:Name="stack2" Orientation="Vertical" HorizontalAlignment="Center">
+
+        </StackPanel>
     </Grid>
 </Window>
