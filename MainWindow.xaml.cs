@@ -56,20 +56,27 @@ namespace WpfApp1
                 ////動的にTextBoxを作成
                 //grid1.Children.Add(textinsertvalue);
 
-                
+
                 //動的に作成するTextBoxの表示位置を設定
-                textBox.SetValue(Canvas.TopProperty, 30.0 * counter + 300);
-                textBox.SetValue(Canvas.LeftProperty, 250.0);
-                //TextBoxを動的に作成
-                canvas1.Children.Add(textBox);
+                //textBox.SetValue(Canvas.TopProperty, 30.0 * counter + 300);
+                //textBox.SetValue(Canvas.LeftProperty, 250.0);
+
+                //20180226追加
+                StackPanel panel = new StackPanel();
+                stack2.Children.Add(textBox);
+                stack2.Children.Add(radio);
+
                 //動的に作成したTextBoxに値を代入
                 textBox.Text = value;
+                
                 //動的に作成したTextBoxを読み取り専用にする
                 textBox.IsReadOnly = true;
-                //RadioButtonを動的に作成
-                radio.SetValue(Canvas.TopProperty, 30.0 * counter + 300);
-                radio.SetValue(Canvas.LeftProperty, 300.0);
-                canvas1.Children.Add(radio);
+
+                ////RadioButtonを動的に作成
+                //radio.SetValue(Canvas.TopProperty, 30.0 * counter + 300);
+                //radio.SetValue(Canvas.LeftProperty, 300.0);
+                //canvas1.Children.Add(radio);
+
                 //Radioボタンのクリックイベント追加
                 radio.Click += Radio_Click;
                 
