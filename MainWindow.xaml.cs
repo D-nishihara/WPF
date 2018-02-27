@@ -25,8 +25,10 @@ namespace WpfApp1
             InitializeComponent();
 
         }
-        int counter = 0;
-        bool textreadonly = false;
+
+        bool _textreadonly = true;
+        bool _checkd = true;
+
         //xml出力用の保存用クラスのインスタンス生成
         Class1 test = new Class1();
 
@@ -39,49 +41,34 @@ namespace WpfApp1
             //Radioボタンのインスタンス生成
             RadioButton radio = new RadioButton();
 
-
             if (value == null)
             {
                 MessageBox.Show("登録内容を入力してからボタンを押下してください。");
             }
             else
-            {
+            {             
                 //テキスト内容をxmlに出力するメソッド呼出
                 Class2 class2 = new Class2();
                 class2.Xmlwrite(value);
 
-                //TextBox1の内容をTextBox2にコピー
-                //textinsertvalue.Text = value;
-
-                ////動的にTextBoxを作成
-                //grid1.Children.Add(textinsertvalue);
-
-
-                //動的に作成するTextBoxの表示位置を設定
-                //textBox.SetValue(Canvas.TopProperty, 30.0 * counter + 300);
-                //textBox.SetValue(Canvas.LeftProperty, 250.0);
-
-                //20180226追加
+                //動的にTextBoxとラジオボタンを追加
                 StackPanel panel = new StackPanel();
-                stack2.Children.Add(textBox);
-                stack2.Children.Add(radio);
-
+                panel.Orientation = Orientation.Horizontal;
+                radio.GroupName = "name";
+                panel.Children.Add(textBox);
+                panel.Children.Add(radio);
+                stack2.Children.Add(panel);
+                
                 //動的に作成したTextBoxに値を代入
                 textBox.Text = value;
                 
                 //動的に作成したTextBoxを読み取り専用にする
-                textBox.IsReadOnly = true;
-
-                ////RadioButtonを動的に作成
-                //radio.SetValue(Canvas.TopProperty, 30.0 * counter + 300);
-                //radio.SetValue(Canvas.LeftProperty, 300.0);
-                //canvas1.Children.Add(radio);
+                textBox.IsReadOnly = _textreadonly;
 
                 //Radioボタンのクリックイベント追加
                 radio.Click += Radio_Click;
-                
-                counter++;
 
+                //登録完了メッセージ
                 //MessageBox.Show("登録が完了しました。");
             }
         }
@@ -118,9 +105,10 @@ namespace WpfApp1
         }
 
         private void Radio_Click(object sender, RoutedEventArgs e)
-        {   
-            if (RadioButton.IsCheckedProperty == null)
+        {
+            if (((RadioButton)sender).IsChecked == true)
             {
+                 
             }
         }
     }
