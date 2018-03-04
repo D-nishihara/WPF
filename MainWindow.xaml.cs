@@ -47,9 +47,9 @@ namespace WpfApp1
             }
             else
             {             
-                //テキスト内容をxmlに出力するメソッド呼出
-                Class2 class2 = new Class2();
-                class2.Xmlwrite(value);
+                ////テキスト内容をxmlに出力するメソッド呼出
+                //Class2 class2 = new Class2();
+                //class2.Xmlwrite(value);
 
                 //動的にTextBoxとラジオボタンを追加
                 StackPanel panel = new StackPanel();
@@ -64,6 +64,9 @@ namespace WpfApp1
                 
                 //動的に作成したTextBoxを読み取り専用にする
                 textBox.IsReadOnly = _textreadonly;
+
+                //RadioButtonのタグプロパティにTextBoxをセット
+                radio.Tag = textBox;
 
                 //Radioボタンのクリックイベント追加
                 radio.Click += Radio_Click;
@@ -106,10 +109,32 @@ namespace WpfApp1
 
         private void Radio_Click(object sender, RoutedEventArgs e)
         {
-            if (((RadioButton)sender).IsChecked == true)
+            //senderにセットされいるオブジェクトをRadioButtonにキャストして変数に格納
+            var radiocast = (RadioButton)sender;
+
+            //Tagの中に格納されているTextBoxオブジェクトをTextBoxにキャストして変数に格納
+            var textcast = (TextBox)radiocast.Tag;
+
+            //List<RadioButton> list = new List<RadioButton>() { stack2.Children.OfType<RadioButton> };
+
+            foreach (var panel in stack2.Children.OfType<StackPanel>())
             {
-                 
+                foreach (var test in panel.Children.OfType<RadioButton>())
+                {
+                    if (test.IsChecked == true)
+                    {
+                        textcast.IsReadOnly = false;
+                    }
+                    else
+                    {
+                        textcast.IsReadOnly = true;
+                    }
+                }
             }
+            //if (((RadioButton)sender).IsChecked == true)
+            //{
+                 
+            //}
         }
     }
 }
