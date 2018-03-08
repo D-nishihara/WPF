@@ -46,7 +46,7 @@ namespace WpfApp1
                 //テキスト内容をxmlに出力するメソッド呼出
                 //後でコンストラクタで実施するように書き換える
                 XmlManager xmlmanager = new XmlManager();
-                xmlmanager.Xmlcreater(textBox);
+                xmlmanager.Xmlcreater(value);
 
                 //動的にTextBoxとラジオボタンを追加
                 StackPanel panel = new StackPanel();
