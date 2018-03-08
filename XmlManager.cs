@@ -13,26 +13,32 @@ namespace WpfApp1
     public class XmlManager
     {
         public string Value;
-        public void Xmlcreater(TextBox value)
+        public void Xmlcreater(string value)
         {
 
             const string xmlFile = @"C:\test\test.xml";
 
-            object xmltext = (object)value.Text;
+            var xmlhozi = new Xmlhozi();
+            xmlhozi.text = value;
 
-            var xmlSerializer1 = new XmlSerializer(typeof(XmlManager));
+            var xmlSerializer1 = new XmlSerializer(typeof(Xmlhozi));
             using (var streamWriter = new StreamWriter(xmlFile, true, Encoding.UTF8))
             {
-                //xmlSerializer1.Serialize(streamWriter, value.Text);
-                //streamWriter.Flush();
+                xmlSerializer1.Serialize(streamWriter, xmlhozi);
+                streamWriter.Flush();
 
 
-                streamWriter.Write(value.Text);
-                streamWriter.Close();
+                //streamWriter.Write(value.Text);
+                //streamWriter.Close();
                 //xmlSerializer1.Serialize(streamWriter, xmltext);
             }
 
         }
 
+    }
+
+    public class Xmlhozi
+    {
+        public string text;
     }
 }
