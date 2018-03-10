@@ -24,9 +24,15 @@ namespace WpfApp1
         {
             InitializeComponent();
 
+            //DataSetのインスタンス生成
+            DataStorage dt = new DataStorage();
         }
 
         bool _textreadonly = true;
+
+
+        //DataSetのインスタンス生成
+        DataStorage dt = new DataStorage();
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -45,9 +51,9 @@ namespace WpfApp1
             {
                 //テキスト内容をxmlに出力するメソッド呼出
                 //後でコンストラクタで実施するように書き換える
-                XmlManager xmlmanager = new XmlManager();
-                xmlmanager.Xmlcreater(value);
-
+                //XmlManager xmlmanager = new XmlManager();
+                //xmlmanager.Xmlcreater(value);
+                
                 //動的にTextBoxとラジオボタンを追加
                 StackPanel panel = new StackPanel();
                 panel.Orientation = Orientation.Horizontal;
@@ -55,7 +61,10 @@ namespace WpfApp1
                 panel.Children.Add(textBox);
                 panel.Children.Add(radio);
                 stack2.Children.Add(panel);
-                
+
+                //DataSetにTextBoxの値を格納
+                dt.datamanagement(value);
+
                 //動的に作成したTextBoxに値を代入
                 textBox.Text = value;
                 
