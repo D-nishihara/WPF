@@ -9,6 +9,13 @@ using System.Xml.Serialization;
 
 namespace WpfApp1
 {
+    
+    public class Xmlhozi
+    {
+        public string text;
+    }
+
+
 
     public class XmlManager
     {
@@ -35,10 +42,18 @@ namespace WpfApp1
 
         }
 
-    }
 
-    public class Xmlhozi
-    {
-        public string text;
+        /// <summary>
+        ///XMLファイルの情報を設定
+        /// </summary>
+        /// <returns> XMLファイルの情報をセット</returns>
+        public StreamWriter XmlCreateFile()
+        {
+            StreamWriter sw = new StreamWriter(@"C:\test\test.xml", false,
+                    System.Text.Encoding.GetEncoding("Shift_Jis"));
+
+            return sw;
+        }
+
     }
 }

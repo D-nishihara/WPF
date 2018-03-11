@@ -31,23 +31,40 @@ namespace WpfApp1
             ds.Tables.Add(dt);
         }
 
+        string tvalue = null;
+        int tkey = 0;
         //DataSetに行を追加し、登録するメソッド
-        public void datamanagement(string inserttext)
+        public void datainsert(IDictionary<int, string> data)
         {
+
+            foreach (KeyValuePair<int, string> item in data)
+            {
+                tkey = item.Key;
+
+                tvalue = item.Value;
+            }
+            
             //行を追加
             DataRow row = ds.Tables[0].NewRow();
             //値を格納
-            row[0] = inserttext;
+            row["ID"] = tkey;
+            row["textname"] = tvalue;
+            
             //DataSetに追加
             ds.Tables[0].Rows.Add(row);
-            //XmlManager xmlmanager = new XmlManager();
-            //xmlmanager.Xmlcreater(inserttext);
 
-            StreamWriter sw = new StreamWriter(@"C:\test\test.xml", false,
-                                System.Text.Encoding.GetEncoding("Shift_Jis"));
+            var xmlmanager = new XmlManager();
+            StreamWriter sr = xmlmanager.XmlCreateFile();
 
-            ds.WriteXml(sw);
-            sw.Close();
+            ds.WriteXml(sr);
+            sr.Close();
+        }
+
+
+        //DataSet削除メソッド
+        public void datadeleate()
+        {
+
         }
     }
 }

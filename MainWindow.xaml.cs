@@ -24,7 +24,7 @@ namespace WpfApp1
         {
             InitializeComponent();
 
-            //DataSetのインスタンス生成
+            //DataSetのコンストラクタ呼出
             DataStorage dt = new DataStorage();
         }
 
@@ -33,6 +33,11 @@ namespace WpfApp1
 
         //DataSetのインスタンス生成
         DataStorage dt = new DataStorage();
+
+        //ディクショナリ生成
+          Dictionary<int, string> data = new Dictionary<int, string>();
+
+        int i = 1;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -53,6 +58,18 @@ namespace WpfApp1
                 //後でコンストラクタで実施するように書き換える
                 //XmlManager xmlmanager = new XmlManager();
                 //xmlmanager.Xmlcreater(value);
+
+                //ディクショナリの値とキーを設定
+                if(i == 1)
+                {
+                    data.Add(i, value);
+                }
+                else
+                {
+                    data.Add(i, value);
+                }
+
+                i++;
                 
                 //動的にTextBoxとラジオボタンを追加
                 StackPanel panel = new StackPanel();
@@ -63,7 +80,8 @@ namespace WpfApp1
                 stack2.Children.Add(panel);
 
                 //DataSetにTextBoxの値を格納
-                dt.datamanagement(value);
+                dt.datainsert(data);
+                //dt.datainsert(value);
 
                 //動的に作成したTextBoxに値を代入
                 textBox.Text = value;
